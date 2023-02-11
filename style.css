@@ -1,0 +1,9 @@
+body {
+  padding-left: 8px;
+}
+tbody span {
+  display: inline-block;
+}
+.rate {
+  width: 33%;
+}
