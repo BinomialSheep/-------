@@ -151,16 +151,10 @@ window.onload = function () {
     let nowKindList = Array(row).fill(0);
     const tableRows = document.querySelector(".table").rows;
     for (let i = 1; i < row + 1; i++) {
-      totalKindList[i - 1] =
-        parseInt(tableRows[i].querySelector("td:nth-child(2) input").value) ||
-        0;
-      rateList[i - 1] =
-        parseFloat(tableRows[i].querySelector("td:nth-child(3) input").value) ||
-        0;
+      totalKindList[i - 1] = parseInt(tableRows[i].querySelector("td:nth-child(2) input").value) || 0;
+      rateList[i - 1] = parseFloat(tableRows[i].querySelector("td:nth-child(3) input").value) || 0;
       rateList[i - 1] /= 100;
-      nowKindList[i - 1] =
-        parseInt(tableRows[i].querySelector("td:nth-child(4) input").value) ||
-        0;
+      nowKindList[i - 1] = parseInt(tableRows[i].querySelector("td:nth-child(4) input").value) || 0;
     }
     console.log(totalKindList);
     console.log(rateList);
@@ -178,11 +172,9 @@ window.onload = function () {
     //
     result = calcResult(mp, mpKeys, nowKindList);
     // 値表示
-    document.querySelector(
-      "#result"
-    ).textContent = `あなたの運の良さは上位${calcParcent(
-      result[0]
-    )}%～${calcParcent(result[1])}%程度`;
+    document.querySelector("#result").textContent = `あなたの運の良さは上位${calcParcent(result[0])}%～${calcParcent(
+      result[1]
+    )}%程度`;
   });
 
   // 浅見ゆいボタン
@@ -194,12 +186,21 @@ window.onload = function () {
     for (let i = 1; i < row + 1; i++) {
       tableRows[i].querySelector("td:nth-child(2)").textContent = "";
       tableRows[i].querySelector("td:nth-child(3) span").textContent = "";
-      tableRows[i]
-        .querySelector("td:nth-child(2)")
-        .appendChild(makeInputForm(kindValList[i - 1]));
-      tableRows[i]
-        .querySelector("td:nth-child(3) span")
-        .appendChild(makeInputForm(rateValList[i - 1]));
+      tableRows[i].querySelector("td:nth-child(2)").appendChild(makeInputForm(kindValList[i - 1]));
+      tableRows[i].querySelector("td:nth-child(3) span").appendChild(makeInputForm(rateValList[i - 1]));
+    }
+  });
+  // 藍月なくるinくじメイトボタン
+  const nakuruButton = document.getElementById("nakuru");
+  nakuruButton.addEventListener("click", () => {
+    const kindValList = Array(1, 1, 1, 4, 3, 8, 5);
+    const rateValList = Array(0, 0, 1, 10, 12, 32, 45);
+    const tableRows = document.querySelector(".table").rows;
+    for (let i = 1; i < row + 1; i++) {
+      tableRows[i].querySelector("td:nth-child(2)").textContent = "";
+      tableRows[i].querySelector("td:nth-child(3) span").textContent = "";
+      tableRows[i].querySelector("td:nth-child(2)").appendChild(makeInputForm(kindValList[i - 1]));
+      tableRows[i].querySelector("td:nth-child(3) span").appendChild(makeInputForm(rateValList[i - 1]));
     }
   });
 };
